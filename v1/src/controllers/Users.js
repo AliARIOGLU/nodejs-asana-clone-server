@@ -152,9 +152,9 @@ const deleteUser = (req, res) => {
 
 const updateProfileImage = (req, res) => {
   // 1 -Resim kontrolü
-  if (req?.files?.profile_image) {
+  if (!req?.files?.profile_image) {
     return res.status(httpStatus.BAD_REQUEST).send({
-      error: "Lütfen izin verilen resim formati ile yükleyiniz",
+      error: "Bu islemi yapmak icin gerekli veriye sahip degilsiniz..",
     });
   }
   // 2 -Upload işlemi
@@ -169,10 +169,10 @@ const updateProfileImage = (req, res) => {
       });
     }
     // 3 -Db Save
-    modify({ _id: req.user.id }, { profile_image: fileName })
+    modify({ _id: req.user._id }, { profile_image: fileName })
       .then((updatedUser) => {
         // 4 -Response
-        res.status(httpStatus.OK).send(updatedUser);
+        return res.status(httpStatus.OK).send(updatedUser);
       })
       .catch(() =>
         res

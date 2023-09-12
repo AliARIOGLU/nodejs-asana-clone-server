@@ -5,3 +5,7 @@
 {"level":"info","message":{"_id":"64fcb9bd04a2117ce1215d62","createdAt":"2023-09-09T18:30:21.795Z","name":"Test Project4","updatedAt":"2023-09-09T18:30:21.795Z"},"service":"projects-service"}
 {"level":"info","message":{"_id":"64fcbb3b8e0d226d6210f89f","createdAt":"2023-09-09T18:36:43.525Z","name":"Test Project5","updatedAt":"2023-09-09T18:36:43.525Z","user_id":"64fc63a81aa606fef61c1f0e"},"service":"projects-service"}
 {"level":"info","message":{"_id":"64fcbcbef6c968e46836c9b3","createdAt":"2023-09-09T18:43:10.629Z","name":"Test Project-1","updatedAt":"2023-09-09T18:43:10.629Z","user_id":"64fcb94c04a2117ce1215d58"},"service":"projects-service"}
+{"level":"info","message":{"_id":"65003bb3de5a467ee216828c","createdAt":"2023-09-12T10:21:39.642Z","name":"Halit's Project1","updatedAt":"2023-09-12T10:21:39.642Z","user_id":"64fcb94c04a2117ce1215d58"},"service":"projects-service"}
+{"level":"info","message":{"_id":"65003c14de5a467ee2168291","createdAt":"2023-09-12T10:23:16.157Z","name":"Halit's Project test","updatedAt":"2023-09-12T10:23:16.157Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
+{"level":"info","message":{"_id":"6500597d6783d6811fd812ca","createdAt":"2023-09-12T12:28:45.057Z","name":"ERP Project-1","updatedAt":"2023-09-12T12:28:45.057Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
+{"level":"info","message":{"_id":"650059886783d6811fd812cc","createdAt":"2023-09-12T12:28:56.102Z","name":"ERP Project-2","updatedAt":"2023-09-12T12:28:56.102Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
