@@ -4,13 +4,14 @@ const helmet = require("helmet");
 const config = require("./config");
 const loaders = require("./loaders");
 const events = require("./scripts/events");
+const path = require("path");
+const errorHandler = require("./middlewares/errorHandler");
 const {
   ProjectRoutes,
   UserRoutes,
   SectionRoutes,
   TaskRoutes,
 } = require("./routes");
-const path = require("path");
 
 config();
 loaders();
@@ -32,7 +33,12 @@ app.listen(PORT, () => {
   app.use("/sections", SectionRoutes);
   app.use("/tasks", TaskRoutes);
 
-  app.use((req, res, next) => {});
+  app.use((req, res, next) => {
+    const error = new Error("Aradiginiz sayfa bulunmamaktadir..");
+    error.status = 404;
+    next(error);
+  });
 
   //! Error Handler
+  app.use(errorHandler);
 });

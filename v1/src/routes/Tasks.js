@@ -1,5 +1,6 @@
-// validate middlware
+// middlewares
 const validate = require("../middlewares/validate");
+const idChecker = require("../middlewares/idChecker");
 // validations
 const schemas = require("../validations/Tasks");
 
@@ -21,11 +22,12 @@ router
     TaskController.create
   );
 
-router.route("/:id").get(authenticate, TaskController.showTask);
+router.route("/:id").get(idChecker(), authenticate, TaskController.showTask);
 
 router
   .route("/:id")
   .patch(
+    idChecker(),
     authenticate,
     validate(schemas.updateValidation),
     TaskController.update
@@ -34,6 +36,7 @@ router
 router
   .route("/:id/add-sub-task")
   .post(
+    idChecker(),
     authenticate,
     validate(schemas.createValidation),
     TaskController.addSubTask
@@ -42,6 +45,7 @@ router
 router
   .route("/:id/make-comment")
   .post(
+    idChecker(),
     authenticate,
     validate(schemas.commentValidation),
     TaskController.makeComment
@@ -49,8 +53,10 @@ router
 
 router
   .route("/:id/:commentId")
-  .delete(authenticate, TaskController.deleteComment);
+  .delete(idChecker(), authenticate, TaskController.deleteComment);
 
-router.route("/:id").delete(authenticate, TaskController.deleteTask);
+router
+  .route("/:id")
+  .delete(idChecker(), authenticate, TaskController.deleteTask);
 
 module.exports = router;

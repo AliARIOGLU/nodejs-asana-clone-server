@@ -1,5 +1,6 @@
 const httpStatus = require("http-status");
 const projectsService = require("../services/ProjectsService");
+const ApiError = require("../errors/ApiError");
 
 class Project {
   index(req, res) {
@@ -23,23 +24,21 @@ class Project {
       });
   }
 
-  update(req, res) {
+  update(req, res, next) {
     if (!req.params?.id) {
       return res.status(httpStatus.BAD_REQUEST).send({
         message: "There is no ID",
       });
     }
-
     projectsService
       .update(req.params.id, req.body)
       .then((updatedProject) => {
+        if (!updatedProject) {
+          return next(new ApiError("Böyle bir kayit bulunmamaktadir", 404));
+        }
         res.status(httpStatus.OK).send(updatedProject);
       })
-      .catch(() =>
-        res
-          .status(httpStatus.INTERNAL_SERVER_ERROR)
-          .send({ error: "Kayit sirasinda bir hata oluştu" })
-      );
+      .catch((e) => next(new ApiError(e?.message)));
   }
 
   deleteProject(req, res) {

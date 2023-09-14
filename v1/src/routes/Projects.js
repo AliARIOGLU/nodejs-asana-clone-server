@@ -1,5 +1,6 @@
-// validate middlware
+// middlewares
 const validate = require("../middlewares/validate");
+const idChecker = require("../middlewares/idChecker");
 // validations
 const schemas = require("../validations/Projects");
 
@@ -21,11 +22,14 @@ router
 router
   .route("/:id")
   .patch(
+    idChecker(),
     authenticate,
     validate(schemas.updateValidation),
     ProjectController.update
   );
 
-router.route("/:id").delete(authenticate, ProjectController.deleteProject);
+router
+  .route("/:id")
+  .delete(idChecker(), authenticate, ProjectController.deleteProject);
 
 module.exports = router;

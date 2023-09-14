@@ -1,5 +1,6 @@
-// validate middleware
+// middlewares
 const validate = require("../middlewares/validate");
+const idChecker = require("../middlewares/idChecker");
 // validations
 const schemas = require("../validations/Users");
 // authenticate middleware
@@ -45,6 +46,8 @@ router
   .route("/update-profile-image")
   .post(authenticate, UserController.updateProfileImage);
 
-router.route("/:id").delete(authenticate, UserController.deleteUser);
+router
+  .route("/:id")
+  .delete(idChecker(), authenticate, UserController.deleteUser);
 
 module.exports = router;
