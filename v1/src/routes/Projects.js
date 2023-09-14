@@ -4,25 +4,28 @@ const validate = require("../middlewares/validate");
 const schemas = require("../validations/Projects");
 
 const express = require("express");
-const {
-  create,
-  index,
-  update,
-  deleteProject,
-} = require("../controllers/Projects");
+const ProjectController = require("../controllers/Project");
 const authenticate = require("../middlewares/authenticate");
 const router = express.Router();
 
-router.route("/").get(authenticate, index);
+router.route("/").get(authenticate, ProjectController.index);
 
 router
   .route("/")
-  .post(authenticate, validate(schemas.createValidation), create);
+  .post(
+    authenticate,
+    validate(schemas.createValidation),
+    ProjectController.create
+  );
 
 router
   .route("/:id")
-  .patch(authenticate, validate(schemas.updateValidation), update);
+  .patch(
+    authenticate,
+    validate(schemas.updateValidation),
+    ProjectController.update
+  );
 
-router.route("/:id").delete(authenticate, deleteProject);
+router.route("/:id").delete(authenticate, ProjectController.deleteProject);
 
 module.exports = router;

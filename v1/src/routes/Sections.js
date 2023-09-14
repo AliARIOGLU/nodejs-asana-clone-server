@@ -7,25 +7,28 @@ const authenticate = require("../middlewares/authenticate");
 
 const express = require("express");
 
-const {
-  index,
-  create,
-  update,
-  deleteSection,
-} = require("../controllers/Sections");
+const SectionController = require("../controllers/Section");
 
 const router = express.Router();
 
-router.route("/:projectId").get(authenticate, index);
+router.route("/:projectId").get(authenticate, SectionController.index);
 
 router
   .route("/")
-  .post(authenticate, validate(schemas.createValidation), create);
+  .post(
+    authenticate,
+    validate(schemas.createValidation),
+    SectionController.create
+  );
 
 router
   .route("/:id")
-  .patch(authenticate, validate(schemas.updateValidation), update);
+  .patch(
+    authenticate,
+    validate(schemas.updateValidation),
+    SectionController.update
+  );
 
-router.route("/:id").delete(authenticate, deleteSection);
+router.route("/:id").delete(authenticate, SectionController.deleteSection);
 
 module.exports = router;

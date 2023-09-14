@@ -31,4 +31,8 @@ app.listen(PORT, () => {
   app.use("/users", UserRoutes);
   app.use("/sections", SectionRoutes);
   app.use("/tasks", TaskRoutes);
+
+  app.use((req, res, next) => {});
+
+  //! Error Handler
 });

@@ -9,3 +9,4 @@
 {"level":"info","message":{"_id":"65003c14de5a467ee2168291","createdAt":"2023-09-12T10:23:16.157Z","name":"Halit's Project test","updatedAt":"2023-09-12T10:23:16.157Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
 {"level":"info","message":{"_id":"6500597d6783d6811fd812ca","createdAt":"2023-09-12T12:28:45.057Z","name":"ERP Project-1","updatedAt":"2023-09-12T12:28:45.057Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
 {"level":"info","message":{"_id":"650059886783d6811fd812cc","createdAt":"2023-09-12T12:28:56.102Z","name":"ERP Project-2","updatedAt":"2023-09-12T12:28:56.102Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}
+{"level":"info","message":{"_id":"6502f6edff78d1aad7b47511","createdAt":"2023-09-14T12:05:01.415Z","name":"ERP Project-2","updatedAt":"2023-09-14T12:05:01.415Z","user_id":"64fc5bbcd1a4a02bd301a15b"},"service":"projects-service"}

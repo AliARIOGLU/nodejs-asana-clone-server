@@ -7,38 +7,50 @@ const authenticate = require("../middlewares/authenticate");
 
 const express = require("express");
 
-const {
-  create,
-  update,
-  deleteTask,
-  makeComment,
-  deleteComment,
-  addSubTask,
-  showTask,
-} = require("../controllers/Tasks");
+const TaskController = require("../controllers/Task");
 
 const router = express.Router();
 
+router.route("/").get(authenticate, TaskController.index);
+
 router
   .route("/")
-  .post(authenticate, validate(schemas.createValidation), create);
+  .post(
+    authenticate,
+    validate(schemas.createValidation),
+    TaskController.create
+  );
 
-router.route("/:id").get(authenticate, showTask);
+router.route("/:id").get(authenticate, TaskController.showTask);
 
 router
   .route("/:id")
-  .patch(authenticate, validate(schemas.updateValidation), update);
+  .patch(
+    authenticate,
+    validate(schemas.updateValidation),
+    TaskController.update
+  );
 
 router
   .route("/:id/add-sub-task")
-  .post(authenticate, validate(schemas.createValidation), addSubTask);
+  .post(
+    authenticate,
+    validate(schemas.createValidation),
+    TaskController.addSubTask
+  );
 
 router
   .route("/:id/make-comment")
-  .post(authenticate, validate(schemas.commentValidation), makeComment);
+  .post(
+    authenticate,
+    validate(schemas.commentValidation),
+    TaskController.makeComment
+  );
 
-router.route("/:id/:commentId").delete(authenticate, deleteComment);
+router
+  .route("/:id/:commentId")
+  .delete(authenticate, TaskController.deleteComment);
 
-router.route("/:id").delete(authenticate, deleteTask);
+router.route("/:id").delete(authenticate, TaskController.deleteTask);
 
 module.exports = router;
