@@ -115,7 +115,7 @@ class User {
   }
 
   changePassword(req, res) {
-    // !.. UI Geldikten sonra şifre karşılaştırmaları
+    //TODO: UI Geldikten sonra şifre karşılaştırmaları
     req.body.password = passwordToHash(req.body.password);
     usersService
       .update(req.user?._id, req.body)

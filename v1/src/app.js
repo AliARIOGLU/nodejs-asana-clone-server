@@ -28,6 +28,7 @@ app.use(fileUpload());
 
 app.listen(PORT, () => {
   console.log(`Sunucu ${PORT} portunda ayakta...`);
+  // ROUTES
   app.use("/projects", ProjectRoutes);
   app.use("/users", UserRoutes);
   app.use("/sections", SectionRoutes);
