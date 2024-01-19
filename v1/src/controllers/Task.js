@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const tasksService = require("../services/TasksService");
 
-class Task {
+class TaskController {
   index(req, res) {
     if (!req?.params?.projectId) {
       return res
@@ -199,4 +199,4 @@ class Task {
   }
 }
 
-module.exports = new Task();
+module.exports = new TaskController();

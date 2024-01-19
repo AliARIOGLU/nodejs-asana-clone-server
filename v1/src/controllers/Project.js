@@ -2,7 +2,7 @@ const httpStatus = require("http-status");
 const projectsService = require("../services/ProjectsService");
 const ApiError = require("../errors/ApiError");
 
-class Project {
+class ProjectController {
   index(req, res) {
     projectsService
       .list()
@@ -68,4 +68,4 @@ class Project {
   }
 }
 
-module.exports = new Project();
+module.exports = new ProjectController();

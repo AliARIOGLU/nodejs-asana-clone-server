@@ -1,7 +1,7 @@
 const httpStatus = require("http-status");
 const sectionsService = require("../services/SectionsService");
 
-class Section {
+class SectionController {
   index(req, res) {
     if (!req?.params?.projectId) {
       return res
@@ -74,4 +74,4 @@ class Section {
   }
 }
 
-module.exports = new Section();
+module.exports = new SectionController();

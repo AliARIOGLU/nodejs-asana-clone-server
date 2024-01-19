@@ -10,7 +10,7 @@ const path = require("path");
 const usersService = require("../services/UsersService");
 const projectsService = require("../services/ProjectsService");
 
-class User {
+class UserController {
   create(req, res) {
     req.body.password = passwordToHash(req.body.password);
 
@@ -189,4 +189,4 @@ class User {
   }
 }
 
-module.exports = new User();
+module.exports = new UserController();
